@@ -14,19 +14,20 @@
 
 class ASTNode {
 	protected:
-		std::vector<std::shared_ptr<ASTNode> > children;
+		std::vector<ASTNode* > children;
 
 
 public:
 	ASTNode();
-	ASTNode(ASTNode& child1);
-	ASTNode(ASTNode& child1,ASTNode& child2);
+	ASTNode(ASTNode* child1);
+	ASTNode(ASTNode* child1,ASTNode* child2);
 	ASTNode(ASTNode& child1,ASTNode& child2,ASTNode& child3);
 	~ASTNode();
 	
-	void add_child(std::shared_ptr<ASTNode>);
-	virtual void print(int level);
+	void add_child(ASTNode*);
+	void print(int level);
+	virtual void printElem(void);
 };
-typedef std::shared_ptr<ASTNode> AST_ptr;
+typedef ASTNode* AST_ptr;
 
 #endif /* ASTNode_hpp */

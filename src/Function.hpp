@@ -17,7 +17,7 @@ class Function : public ASTNode {
 
 public:
 	Function(std::string name);
-	virtual void print(int level) override;
+	virtual void printElem(void) override;
 };
 
 #endif /* Function_hpp */

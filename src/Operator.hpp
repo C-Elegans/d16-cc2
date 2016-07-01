@@ -11,13 +11,13 @@
 #include "ASTNode.hpp"
 #include <stdio.h>
 
-enum class Operator_type{ADD,SUBTRACT,MULTIPLY,DIVIDE,CMP_EQ,CMP_NE,CMP_GT,CMP_LT,CMP_GE,CMP_LE};
+enum class Operator_type{ADD,SUBTRACT,MUL,DIV,CMP_EQ,CMP_NE,CMP_GT,CMP_LT,CMP_GE,CMP_LE};
 class Operator : public ASTNode{
 
 
 public:
 	Operator_type type;
 	Operator(Operator_type type,AST_ptr child1, AST_ptr child2);
-	virtual void print(int level) override;
+	virtual void printElem(void) override;
 };
 #endif /* Operator_hpp */

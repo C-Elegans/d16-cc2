@@ -16,7 +16,10 @@ int {/*printf("int\n");*/return INT;}
 return {return RETURN;}
 void {return VOID;}
 while {return WHILE;}
-
+\+ {return PLUS;}
+\- {return MINUS;}
+\* {return MULTIPLY;}
+\/ {return DIVIDE;}
 
 [0-9]+ {yylval.ival = atoi(yytext);return NUM;}
 [a-zA-Z][a-zA-Z0-9]* {/*printf("id: %s\n",yytext);*/yylval.sval = strdup(yytext); return ID;}

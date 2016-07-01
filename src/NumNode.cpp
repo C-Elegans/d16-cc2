@@ -14,10 +14,8 @@ NumNode::~NumNode(){
 
 }
 
-void NumNode::print(int level){
-	for(int i=0;i<level;i++){
-		printf("\t");
-	}
+void NumNode::printElem(){
+
 	printf("Number: %d\n", value);
 	//Will never have children
 }

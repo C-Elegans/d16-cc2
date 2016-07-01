@@ -13,8 +13,12 @@ ASTNode::ASTNode(){
 }
 
 ASTNode::~ASTNode(){
+	
+	for(int i=0;i<children.size();i++){
+		delete children[i];
+	}
 }
-void ASTNode::add_child(std::shared_ptr<ASTNode> ptr){
+void ASTNode::add_child(ASTNode* ptr){
 	children.push_back(ptr);
 }
 
@@ -22,8 +26,11 @@ void ASTNode::print(int level){
 	for(int i=0;i<level;i++){
 		printf("\t");
 	}
-	printf("ASTNode:\n");
+	this->printElem();
 	for(int i=0;i<children.size();i++){
 		children[i]->print(level+1);
 	}
+}
+void ASTNode::printElem(){
+	printf("ASTNode:\n");
 }

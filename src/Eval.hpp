@@ -1,22 +1,23 @@
 //
-//  NumNode.hpp
+//  Eval.hpp
 //  d16-cc2
 //
 //  Created by Michael Nolan on 7/1/16.
 //  Copyright © 2016 Michael Nolan. All rights reserved.
 //
 
-#ifndef NumNode_hpp
-#define NumNode_hpp
-#include "ASTNode.hpp"
+#ifndef Eval_hpp
+#define Eval_hpp
+#include "ASTInclude.hpp"
+#include <stdio.h>
+#include <string>
 #include <stdio.h>
 
-class NumNode: public ASTNode {
-	int value;
+class Eval : public ASTNode {
+
 
 public:
-	NumNode(int val);
-	~NumNode();
+	Eval(ASTNode*);
 	virtual void printElem(void) override;
 };
-#endif /* NumNode_hpp */
+#endif /* Eval_hpp */

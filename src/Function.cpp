@@ -13,12 +13,6 @@ Function::Function(std::string _name){
 	name = _name;
 }
 
-void Function::print(int level){
-	for(int i=0;i<level;i++){
-		printf("\t");
-	}
-	printf("Function: %s\n",name.c_str());
-	for(int i=0;i<children.size();i++){
-		children[i]->print(level+1);
-	}
+void Function::printElem(){
+	printf("Function: %s",name.c_str());
 }

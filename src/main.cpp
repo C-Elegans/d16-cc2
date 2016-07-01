@@ -16,17 +16,11 @@
 extern FILE* yyin;
 extern int yydebug;
 extern int yyparse(void);
-void astTest(void){
-	ASTNode root;
-	root.add_child(std::make_shared<ASTNode>());
-	root.add_child(std::make_shared<NumNode>(1));
-	root.add_child(std::make_shared<Operator>(Operator_type::ADD,std::make_shared<NumNode>(3),std::make_shared<NumNode>(4)));
-	root.add_child(std::make_shared<Function>("func"));
-	root.print(0);
-}
+extern ASTNode* ast;
+
 int main(int argc, const char * argv[]) {
 
-	astTest();
+	
 	if(argc != 2){
 		std::cerr << "Usage: d16-cc2 [input-file]\n";
 		exit(1);
@@ -37,7 +31,8 @@ int main(int argc, const char * argv[]) {
 	do {
 		yyparse();
 	} while (!feof(yyin));
-
-	std::cout << "Hello, World!\n";
+	ast->print(0);
+	delete ast;
+	
     return 0;
 }

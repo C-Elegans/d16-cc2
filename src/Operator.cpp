@@ -14,12 +14,8 @@ Operator::Operator(Operator_type _type,AST_ptr _child1, AST_ptr _child2){
 	add_child(_child1);
 	add_child(_child2);
 }
-void Operator::print(int level){
-	for(int i=0;i<level;i++){
-		printf("\t");
-	}
+void Operator::printElem(){
+
 	printf("Operator: %s\n",type_strings[static_cast<int>(type)]);
-	for(int i=0;i<children.size();i++){
-		children[i]->print(level+1);
-	}
+
 }
