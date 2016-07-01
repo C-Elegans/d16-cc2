@@ -14,7 +14,7 @@
 
 class ASTNode {
 	protected:
-		std::vector<std::shared_ptr<ASTNode>> children;
+		std::vector<std::shared_ptr<ASTNode> > children;
 
 
 public:

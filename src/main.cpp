@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include <memory>
-#include "lex.h"
 #include "ASTNode.hpp"
 #include "NumNode.hpp"
 #include "Function.hpp"
