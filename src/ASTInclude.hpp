@@ -15,4 +15,7 @@
 #include "Var.hpp"
 #include "Eval.hpp"
 #include "Assign.hpp"
+#include "Selection.hpp"
+#include "Return.hpp"
+#include "While.hpp"
 #endif /* ASTInclude_h */

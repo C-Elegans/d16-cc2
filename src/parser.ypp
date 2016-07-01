@@ -28,12 +28,12 @@ ASTNode* ast;
 %left MULTIPLY DIVIDE
 
 %type<node>program declaration_list declaration simple_expression term var expression
-%type<node>expression_stmt
+%type<node>expression_stmt selection_stmt statement return_stmt iteration_stmt
 %type<o_type> operator
 %start program
 %%
 program:
-	expression_stmt {ast = $1;}
+	statement {ast = $1;}
 ;
 declaration_list:
 		declaration_list declaration
@@ -77,7 +77,7 @@ statement_list:
 
 statement:
 		expression_stmt
-	|	compound_stmt
+	//|	compound_stmt
 	|	selection_stmt
 	|	iteration_stmt
 	|	return_stmt
@@ -86,15 +86,15 @@ expression_stmt:
 	expression ';'{$$=$1;} | ';' {printf("empty expression\n");$$=nullptr;}
 ;
 selection_stmt:
-		IF '(' expression ')'
-	|	IF '(' expression ')' statement ELSE statement
+		IF '(' expression ')' statement {$$ = new Selection($3,$5);}
+	|	IF '(' expression ')' statement ELSE statement {$$ = new Selection($3,$5,$7);}
 ;
 iteration_stmt:
-	WHILE '(' expression ')' statement
+	WHILE '(' expression ')' statement {$$= new While($3,$5);}
 ;
 return_stmt:
-		RETURN ';'
-	|	RETURN expression ';'
+		RETURN ';' {$$=new Return();}
+	|	RETURN expression ';' {$$=new Return($2);}
 ;
 expression:
 	var '=' simple_expression {$$=new Assign($1,$3);}

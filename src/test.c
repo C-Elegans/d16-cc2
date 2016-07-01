@@ -1,1 +1,2 @@
-test = 2+3*abc;
+if(123) y=2;
+else  y=3;
