@@ -16,6 +16,7 @@ ASTNode* ast;
 	int ival;
 	ASTNode* node;
 	Operator_type o_type;
+	type_t	type;
 }
 %token<sval> ID
 %token<ival> NUM
@@ -28,8 +29,10 @@ ASTNode* ast;
 %left MULTIPLY DIVIDE
 
 %type<node>program declaration_list declaration simple_expression term var expression
-%type<node>expression_stmt selection_stmt statement return_stmt iteration_stmt
+%type<node>expression_stmt selection_stmt statement return_stmt iteration_stmt var_declaration
+%type<node>local_declarations compound_stmt statement_list
 %type<o_type> operator
+%type<type> type_specifier
 %start program
 %%
 program:
@@ -43,11 +46,11 @@ declaration:
 	var_declaration | fun_declaration
 ;
 var_declaration:
-		type_specifier ID ';'
-	|   type_specifier ID '[' NUM ']' ';'
+		type_specifier ID ';' {$$=new VarDec($2,$1);}
+	|   type_specifier ID '[' NUM ']' ';'	{$$=new VarDec($2,$1,new NumNode($4));}
 ;
 type_specifier:
-	INT | VOID
+	INT {$$=type_t::T_INT;}| VOID {$$=type_t::T_VOID;}
 ;
 fun_declaration:
 	type_specifier ID '(' params ')' compound_stmt
@@ -64,20 +67,20 @@ param:
 	|	type_specifier ID '[' ']'
 ;
 compound_stmt:
-	'{' local_declarations statement_list '}'
+	'{' local_declarations statement_list '}' {$$= new ASTNode($2,$3);}
 ;
 local_declarations:
-	local_declarations var_declaration
-	| /* empty */
+	local_declarations var_declaration{$$=$1;$$->add_child($2);}
+	| /* empty */{$$= new List("Declarations:");}
 ;
 statement_list:
-	statement_list statement
-	| /* empty */
+	statement_list statement {$$=$1;$$->add_child($2);}
+	| /* empty */{$$=new List("Statements:");}
 ;
 
 statement:
 		expression_stmt
-	//|	compound_stmt
+	|	compound_stmt
 	|	selection_stmt
 	|	iteration_stmt
 	|	return_stmt

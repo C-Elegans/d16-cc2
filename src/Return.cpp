@@ -14,5 +14,5 @@ Return::Return(ASTNode* expr){
 	add_child(expr);
 }
 void Return::printElem(){
-	printf("Return:");
+	printf("Return:\n");
 }

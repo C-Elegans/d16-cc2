@@ -11,6 +11,18 @@
 ASTNode::ASTNode(){
 
 }
+ASTNode::ASTNode(ASTNode* child1){
+	add_child(child1);
+}
+ASTNode::ASTNode(ASTNode* child1,ASTNode* child2){
+	add_child(child1);
+	add_child(child2);
+}
+ASTNode::ASTNode(ASTNode* child1,ASTNode* child2,ASTNode* child3){
+	add_child(child1);
+	add_child(child2);
+	add_child(child3);
+}
 
 ASTNode::~ASTNode(){
 	

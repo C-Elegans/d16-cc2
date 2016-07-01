@@ -21,7 +21,7 @@ public:
 	ASTNode();
 	ASTNode(ASTNode* child1);
 	ASTNode(ASTNode* child1,ASTNode* child2);
-	ASTNode(ASTNode& child1,ASTNode& child2,ASTNode& child3);
+	ASTNode(ASTNode* child1,ASTNode* child2,ASTNode* child3);
 	~ASTNode();
 	
 	void add_child(ASTNode*);

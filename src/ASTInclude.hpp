@@ -18,4 +18,6 @@
 #include "Selection.hpp"
 #include "Return.hpp"
 #include "While.hpp"
+#include "VarDec.hpp"
+#include "List.hpp"
 #endif /* ASTInclude_h */
