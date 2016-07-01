@@ -7,18 +7,33 @@
 //
 
 #include <iostream>
+#include <memory>
 #include "lex.h"
-#include "parser.h"
+#include "ASTNode.hpp"
+#include "NumNode.hpp"
+#include "Function.hpp"
+#include "Operator.hpp"
+#include "parser.hpp"
 extern FILE* yyin;
 extern int yydebug;
-extern "C" int yyparse(void);
+extern int yyparse(void);
+void astTest(void){
+	ASTNode root;
+	root.add_child(std::make_shared<ASTNode>());
+	root.add_child(std::make_shared<NumNode>(1));
+	root.add_child(std::make_shared<Operator>(Operator_type::ADD,std::make_shared<NumNode>(3),std::make_shared<NumNode>(4)));
+	root.add_child(std::make_shared<Function>("func"));
+	root.print(0);
+}
 int main(int argc, const char * argv[]) {
+
+	astTest();
 	if(argc != 2){
 		std::cerr << "Usage: d16-cc2 [input-file]\n";
 		exit(1);
 	}
 	FILE* input = fopen(argv[1], "r");
-	yydebug = 1;
+	yydebug = 0;
 	yyin = input;
 	do {
 		yyparse();

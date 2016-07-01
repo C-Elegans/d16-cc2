@@ -15,6 +15,12 @@ void yyerror(const char* s);
 %token<sval> ID
 %token<ival> NUM
 %token ELSE IF INT RETURN VOID WHILE
+%token PLUS MINUS MULTIPLY DIVIDE
+%token CMP_EQUAL CMP_NEQUAL CMP_GREATER CMP_LESS CMP_GREATER_EQ CMP_LESS_EQ
+%nonassoc NUM
+%left CMP_EQUAL CMP_NEQUAL CMP_GREATER CMP_LESS CMP_GREATER_EQ CMP_LESS_EQ
+%left PLUS MINUS
+%left MULTIPLY DIVIDE
 %start program
 %%
 program:
@@ -82,40 +88,31 @@ return_stmt:
 	|	RETURN expression ';'
 ;
 expression:
-	var '=' expression | simple_expression
+	var '=' simple_expression | simple_expression
 ;
 var:
 		ID
 	|	ID '[' expression ']'
 ;
 //these should probably become just operators with precedence sometime
-//however, for now I am sticking with the C_ standard
+//however, for now I am sticking with the C- standard
 simple_expression:
-		additive_expression relop additive_expression
-	|	additive_expression
+		term operator term
+	|	term
 ;
-relop:
-		"<="
-	|	"<"
-	|	">"
-	|	">="
-	|	"=="
-	|	"!="
-;
-additive_expression:
-	additive_expression addop term | term
-;
-addop:
-	'+' | '-'
+operator:
+	|	PLUS
+	|	MINUS
+	|	MULTIPLY
+	|	DIVIDE
+	|	CMP_EQUAL
+	|	CMP_NEQUAL
+	|	CMP_GREATER
+	|	CMP_LESS
+	|	CMP_GREATER_EQ
+	|	CMP_LESS_EQ
 ;
 term:
-		term mulop factor
-	|	factor
-;
-mulop:
-	'*'|'/'
-;
-factor:
 		'(' expression ')'
 	|	var
 	|	call

@@ -1,6 +1,6 @@
 %{
 #include <stdio.h>
-#include "parser.h"
+#include "parser.hpp"
 
 int yyline = 0;
 
