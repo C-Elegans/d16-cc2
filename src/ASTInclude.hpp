@@ -20,4 +20,7 @@
 #include "While.hpp"
 #include "VarDec.hpp"
 #include "List.hpp"
+#include "Param.hpp"
+#include "Call.hpp"
+
 #endif /* ASTInclude_h */

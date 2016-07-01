@@ -11,12 +11,14 @@
 #include "ASTNode.hpp"
 #include <string>
 #include <stdio.h>
-
+#include "type.h"
 class Function : public ASTNode {
-	std::string name;
+
 
 public:
-	Function(std::string name);
+	std::string name;
+	type_t type;
+	Function(type_t type, std::string name, ASTNode* params, ASTNode* body);
 	virtual void printElem(void) override;
 };
 

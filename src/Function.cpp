@@ -9,8 +9,11 @@
 #include "Function.hpp"
 
 
-Function::Function(std::string _name){
+Function::Function(type_t _type, std::string _name, ASTNode* params, ASTNode* body){
 	name = _name;
+	type = _type;
+	add_child(params);
+	add_child(body);
 }
 
 void Function::printElem(){

@@ -1,26 +1,28 @@
 //
-//  VarDec.hpp
+//  Param.hpp
 //  d16-cc2
 //
 //  Created by Michael Nolan on 7/1/16.
 //  Copyright © 2016 Michael Nolan. All rights reserved.
 //
 
-#ifndef VarDec_hpp
-#define VarDec_hpp
+#ifndef Param_hpp
+#define Param_hpp
 #include "ASTInclude.hpp"
+
 #include <stdio.h>
 #include <string>
 #include <stdio.h>
 #include "type.h"
-class VarDec: public ASTNode {
+class Param: public ASTNode {
 
 
 public:
-	type_t vartype;
+	type_t type;
 	std::string name;
-	VarDec(std::string _name, type_t type);
-	VarDec(std::string _name, type_t type, ASTNode* size);
+	bool array;
+	Param(std::string _name, type_t type, bool array);
+
 	virtual void printElem() override;
 };
-#endif /* VarDec_hpp */
+#endif /* Param_hpp */
