@@ -36,7 +36,7 @@ void ASTNode::add_child(ASTNode* ptr){
 
 void ASTNode::print(int level){
 	for(int i=0;i<level;i++){
-		printf("\t");
+		printf("    ");
 	}
 	this->printElem();
 	for(int i=0;i<children.size();i++){

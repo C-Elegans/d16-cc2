@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "ASTNode.hpp"
 #include "ASTInclude.hpp"
+#include "type.h"
 #define YYDEBUG 1
 extern int yylex();
 extern int yyparse();
