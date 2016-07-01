@@ -28,11 +28,12 @@ ASTNode* ast;
 %left MULTIPLY DIVIDE
 
 %type<node>program declaration_list declaration simple_expression term var expression
+%type<node>expression_stmt
 %type<o_type> operator
 %start program
 %%
 program:
-	simple_expression {ast = $1;}
+	expression_stmt {ast = $1;}
 ;
 declaration_list:
 		declaration_list declaration
@@ -82,7 +83,7 @@ statement:
 	|	return_stmt
 ;
 expression_stmt:
-	expression ';' | ';'
+	expression ';'{$$=$1;} | ';' {printf("empty expression\n");$$=nullptr;}
 ;
 selection_stmt:
 		IF '(' expression ')'
@@ -96,8 +97,8 @@ return_stmt:
 	|	RETURN expression ';'
 ;
 expression:
-	var '=' simple_expression
-	| simple_expression
+	var '=' simple_expression {$$=new Assign($1,$3);}
+	| simple_expression	{$$=$1;}
 ;
 var:
 		ID  {$$=new Var($1);}

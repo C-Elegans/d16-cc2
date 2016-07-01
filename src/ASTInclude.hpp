@@ -14,4 +14,5 @@
 #include "Function.hpp"
 #include "Var.hpp"
 #include "Eval.hpp"
+#include "Assign.hpp"
 #endif /* ASTInclude_h */
