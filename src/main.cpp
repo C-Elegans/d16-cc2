@@ -13,6 +13,7 @@
 #include "Function.hpp"
 #include "Operator.hpp"
 #include "parser.hpp"
+#include "ExpressionSimplifier.hpp"
 extern FILE* yyin;
 extern int yydebug;
 extern int yyparse(void);
@@ -31,6 +32,9 @@ int main(int argc, const char * argv[]) {
 	do {
 		yyparse();
 	} while (!feof(yyin));
+	ast->print(0);
+	ExpressionSimplifier e;
+	e.runPass(ast);
 	ast->print(0);
 	delete ast;
 	

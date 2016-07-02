@@ -13,7 +13,7 @@
 #include <vector>
 
 class ASTNode {
-	protected:
+	public:
 		std::vector<ASTNode* > children;
 
 
@@ -25,6 +25,8 @@ public:
 	~ASTNode();
 	
 	void add_child(ASTNode*);
+	void replace_child(ASTNode* from, ASTNode* to);
+	
 	void print(int level);
 	virtual void printElem(void);
 };

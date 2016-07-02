@@ -46,3 +46,15 @@ void ASTNode::print(int level){
 void ASTNode::printElem(){
 	printf("ASTNode:\n");
 }
+void ASTNode::replace_child(ASTNode *from, ASTNode *to){
+	for(int i=0;i<children.size();i++){
+		if(children[i] == from){
+			children[i] = to;
+			delete from;
+			return;
+		}
+	}
+	for(int i=0;i<children.size();i++){
+		children[i]->replace_child(from, to);
+	}
+}

@@ -12,9 +12,10 @@
 #include <stdio.h>
 
 class NumNode: public ASTNode {
-	int value;
+
 
 public:
+	int value;
 	NumNode(int val);
 	~NumNode();
 	virtual void printElem(void) override;

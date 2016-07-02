@@ -17,5 +17,5 @@ Function::Function(type_t _type, std::string _name, ASTNode* params, ASTNode* bo
 }
 
 void Function::printElem(){
-	printf("Function: %s",name.c_str());
+	printf("Function: %s\n",name.c_str());
 }
