@@ -13,7 +13,7 @@ Instruction_Mem::Instruction_Mem(OpType t, int _rD, int _rS){
 	rS = _rS;
 	imm = false;
 }
-Instruction_Mem::Instruction_Mem(OpType t, int _rD, int _rS, int _imm, bool displacement){
+Instruction_Mem::Instruction_Mem(OpType t, int _rD, int _rS, int _imm, bool _displacement){
 	type = t;
 	imm = true;
 	if(t == LD){
@@ -25,6 +25,7 @@ Instruction_Mem::Instruction_Mem(OpType t, int _rD, int _rS, int _imm, bool disp
 		rD = _rS;
 		immediate = _imm;
 	}
+	displacement =_displacement;
 }
 void Instruction_Mem::print(){
 	printType();
