@@ -19,6 +19,3 @@ Function::Function(type_t _type, std::string _name, ASTNode* params, ASTNode* bo
 void Function::printElem(){
 	printf("Function: %s\n",name.c_str());
 }
-std::unique_ptr<MachineInstruction> Function::assemble(){
-	return nullptr;
-}

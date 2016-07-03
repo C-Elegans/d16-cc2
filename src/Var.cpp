@@ -23,6 +23,3 @@ void Var::printElem(){
 		printf("Var: %s\n",name.c_str());
 	}
 }
-std::unique_ptr<MachineInstruction> Var::assemble(){
-	return nullptr;
-}

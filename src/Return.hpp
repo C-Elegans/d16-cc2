@@ -20,6 +20,5 @@ public:
 	Return();
 	Return(ASTNode*);
 	virtual void printElem(void) override;
-	virtual std::unique_ptr<MachineInstruction> assemble(void)override;
 };
 #endif /* Return_hpp */

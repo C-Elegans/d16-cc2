@@ -14,6 +14,3 @@ While::While(ASTNode* condition, ASTNode* statement){
 void While::printElem(){
 	printf("While:\n");
 }
-std::unique_ptr<MachineInstruction> While::assemble(){
-	return nullptr;
-}

@@ -19,6 +19,5 @@ class While: public ASTNode {
 public:
 	While(ASTNode* condition, ASTNode* statement);
 	virtual void printElem() override;
-	virtual std::unique_ptr<MachineInstruction> assemble(void)override;
 };
 #endif /* While_hpp */

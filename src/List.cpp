@@ -20,6 +20,3 @@ void List::printElem(){
 		printf("List\n");
 	}
 }
-std::unique_ptr<MachineInstruction> List::assemble(){
-	return nullptr;
-}

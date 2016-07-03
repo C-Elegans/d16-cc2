@@ -21,6 +21,3 @@ void Param::printElem(){
 		printf("%s %s\n",type_strings[static_cast<int>(type)],name.c_str());
 	}
 }
-std::unique_ptr<MachineInstruction> Param::assemble(){
-	return nullptr;
-}

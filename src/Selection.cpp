@@ -19,6 +19,3 @@ Selection::Selection(ASTNode* condition, ASTNode* statement, ASTNode* else_state
 void Selection::printElem(){
 	printf("If: \n");
 }
-std::unique_ptr<MachineInstruction> Selection::assemble(){
-	return nullptr;
-}

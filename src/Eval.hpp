@@ -19,6 +19,5 @@ class Eval : public ASTNode {
 public:
 	Eval(ASTNode*);
 	virtual void printElem(void) override;
-	virtual std::unique_ptr<MachineInstruction> assemble(void)override;
 };
 #endif /* Eval_hpp */

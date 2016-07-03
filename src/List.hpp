@@ -22,6 +22,5 @@ public:
 	List();
 	List(std::string name);
 	virtual void printElem() override;
-	virtual std::unique_ptr<MachineInstruction> assemble(void)override;
 };
 #endif /* List_hpp */

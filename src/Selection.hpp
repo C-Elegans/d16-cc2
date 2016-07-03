@@ -20,6 +20,5 @@ public:
 	Selection(ASTNode* condition, ASTNode* statement);//if (expression) { expression }
 	Selection(ASTNode* condition, ASTNode* statement, ASTNode* else_statement);//if (expression) {expression} else {expression}
 	virtual void printElem() override;
-	virtual std::unique_ptr<MachineInstruction> assemble(void)override;
 };
 #endif /* Selection_hpp */

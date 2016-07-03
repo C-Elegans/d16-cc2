@@ -26,6 +26,7 @@ void CodeGen::recurse(ASTNode* ast){
 			instructions.push_back(std::make_unique<Instruction_RR>(PUSH,0));
 		}
 	}
+	
 }
 CodeGen::CodeGen(ASTNode* ast){
 	recurse(ast);
