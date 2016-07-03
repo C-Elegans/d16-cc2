@@ -19,6 +19,6 @@ public:
 	NumNode(int val);
 	~NumNode();
 	virtual void printElem(void) override;
-	virtual std::unique_ptr<MachineInstruction> assemble(void)override;
+	virtual std::vector<std::unique_ptr<MachineInstruction>> post_assemble(void)override;
 };
 #endif /* NumNode_hpp */

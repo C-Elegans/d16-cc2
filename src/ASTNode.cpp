@@ -58,7 +58,12 @@ void ASTNode::replace_child(ASTNode *from, ASTNode *to){
 		children[i]->replace_child(from, to);
 	}
 }
-std::unique_ptr<MachineInstruction> ASTNode::assemble(){
-	return nullptr;
+std::vector<std::unique_ptr<MachineInstruction>> ASTNode::pre_assemble(){
+	std::vector<std::unique_ptr<MachineInstruction>> v;
+	return v;
+}
+std::vector<std::unique_ptr<MachineInstruction>> ASTNode::post_assemble(){
+	std::vector<std::unique_ptr<MachineInstruction>> v;
+	return v;
 }
 

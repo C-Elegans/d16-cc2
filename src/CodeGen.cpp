@@ -10,23 +10,14 @@
 #include "Instruction_RI.hpp"
 #include "Instruction_RR.hpp"
 void CodeGen::recurse(ASTNode* ast){
+
+	std::vector<std::unique_ptr<MachineInstruction>> pre = ast->pre_assemble();
+	instructions.insert(instructions.end(), std::make_move_iterator(pre.begin()),std::make_move_iterator(pre.end()));
 	for(auto it = ast->children.begin(); it!= ast->children.end();++it){
 		recurse(*it);
 	}
-	if(instanceOf<NumNode>(ast)){
-		std::unique_ptr<MachineInstruction> m = ast->assemble();
-		instructions.push_back(std::move(m));
-	}
-	if(instanceOf<Operator>(ast)){
-		std::unique_ptr<MachineInstruction> m = ast->assemble();
-		if(m != nullptr){
-			instructions.push_back(std::make_unique<Instruction_RR>(POP, 1));
-			instructions.push_back(std::make_unique<Instruction_RR>(POP, 0));
-			instructions.push_back(std::move(m));
-			instructions.push_back(std::make_unique<Instruction_RR>(PUSH,0));
-		}
-	}
-	
+	std::vector<std::unique_ptr<MachineInstruction>> post = ast->post_assemble();
+	instructions.insert(instructions.end(), std::make_move_iterator(post.begin()),std::make_move_iterator(post.end()));
 }
 CodeGen::CodeGen(ASTNode* ast){
 	recurse(ast);

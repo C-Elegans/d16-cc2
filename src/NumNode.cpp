@@ -20,7 +20,8 @@ void NumNode::printElem(){
 	printf("Number: %d\n", value);
 	//Will never have children
 }
-std::unique_ptr<MachineInstruction> NumNode::assemble(void){
-	std::unique_ptr<MachineInstruction> m = std::make_unique<Instruction_RI>(PUSH,value);
-	return m;
+std::vector<std::unique_ptr<MachineInstruction>> NumNode::post_assemble(void){
+	std::vector<std::unique_ptr<MachineInstruction>> v;
+	v.push_back(std::make_unique<Instruction_RI>(PUSH,value));
+	return v;
 }

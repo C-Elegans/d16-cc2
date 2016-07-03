@@ -127,7 +127,7 @@ operator:
 	|	CMP_LESS_EQ {$$=Operator_type::CMP_LE;}
 ;
 term:
-		'(' expression ')' {$$=nullptr;}
+		'(' expression ')' {$$=$2;}
 	|	var {$$=new Eval($1);}
 	|	call {$$=$1;}
 	|	NUM {$$=new NumNode($1);}

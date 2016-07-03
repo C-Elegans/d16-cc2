@@ -30,7 +30,8 @@ public:
 
 	void print(int level);
 	virtual void printElem(void);
-	virtual std::unique_ptr<MachineInstruction> assemble(void);
+	virtual std::vector<std::unique_ptr<MachineInstruction>> pre_assemble(void);
+	virtual std::vector<std::unique_ptr<MachineInstruction>> post_assemble(void);
 
 };
 typedef ASTNode* AST_ptr;

@@ -7,6 +7,7 @@
 //
 
 #include "Operator.hpp"
+#include <stdlib.h>
 #include "Instruction_RR.hpp"
 				//PLUS,MINUS,MULTIPLY,DIVIDE,CMP_EQ,CMP_NE,CMP_GT,CMP_LT,CMP_GE,CMP_LE
 static const char* type_strings[] = {"+","-","*","/","==","!=",">","<",">=","<="};
@@ -20,15 +21,22 @@ void Operator::printElem(){
 	printf("Operator: %s\n",type_strings[static_cast<int>(type)]);
 
 }
-std::unique_ptr<MachineInstruction> Operator::assemble(){
-	std::unique_ptr<MachineInstruction> m;
+std::vector<std::unique_ptr<MachineInstruction>> Operator::post_assemble(){
+	std::vector<std::unique_ptr<MachineInstruction>> v;
+	v.push_back(std::make_unique<Instruction_RR>(POP,1));
+	v.push_back(std::make_unique<Instruction_RR>(POP,0));
 	switch(type){
 		case Operator_type::ADD:
-			m = std::make_unique<Instruction_RR>(ADD,0,1);
+			v.push_back(std::make_unique<Instruction_RR>(ADD,0,1));
+			break;
+		case Operator_type::SUBTRACT:
+			v.push_back(std::make_unique<Instruction_RR>(SUB,0,1));
 			break;
 		default:
-			m = nullptr;
+			fprintf(stderr, "Operation not supported\n");
+			exit(-1);
 			break;
 	}
-	return m;
+	v.push_back(std::make_unique<Instruction_RR>(PUSH,0));
+	return v;
 }
