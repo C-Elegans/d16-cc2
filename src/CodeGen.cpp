@@ -8,19 +8,28 @@
 
 #include "CodeGen.hpp"
 #include "Instruction_RI.hpp"
+#include "Instruction_RR.hpp"
 void CodeGen::recurse(ASTNode* ast){
 	for(auto it = ast->children.begin(); it!= ast->children.end();++it){
 		recurse(*it);
 	}
 	if(instanceOf<NumNode>(ast)){
-		NumNode* n = static_cast<NumNode*>(ast);
-		instructions.push_back(new Instruction_RI(PUSH,n->value));
+		std::unique_ptr<MachineInstruction> m = ast->assemble();
+		instructions.push_back(std::move(m));
+	}
+	if(instanceOf<Operator>(ast)){
+		std::unique_ptr<MachineInstruction> m = ast->assemble();
+		if(m != nullptr){
+			instructions.push_back(std::make_unique<Instruction_RR>(POP, 1));
+			instructions.push_back(std::make_unique<Instruction_RR>(POP, 0));
+			instructions.push_back(std::move(m));
+			instructions.push_back(std::make_unique<Instruction_RR>(PUSH,0));
+		}
 	}
 }
 CodeGen::CodeGen(ASTNode* ast){
 	recurse(ast);
-	for(auto it = instructions.begin(); it != instructions.end(); ++it){
-		MachineInstruction* m = *it;
-		m->print();
+	for(int i=0;i<instructions.size();i++){
+		instructions[i]->print();
 	}
 }

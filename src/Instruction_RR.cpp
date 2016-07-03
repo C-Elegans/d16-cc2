@@ -24,7 +24,7 @@ void Instruction_RR::assemble(uint16_t **data){
 void Instruction_RR::print(){
 	printType();
 	if(type == PUSH || type == POP){
-		printf(" r%d",rD);
+		printf(" r%d\n",rD);
 	}else{
 		printf(" r%d, r%d\n",rD,rS);
 	}

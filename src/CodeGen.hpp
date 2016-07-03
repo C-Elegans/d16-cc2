@@ -14,7 +14,7 @@
 #include "MachineInstruction.hpp"
 
 class CodeGen {
-	std::vector<MachineInstruction*> instructions;
+	std::vector<std::unique_ptr<MachineInstruction>> instructions;
 	void recurse(ASTNode* ast);
 public:
 	CodeGen(ASTNode* ast);
