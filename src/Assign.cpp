@@ -14,3 +14,6 @@ Assign::Assign(ASTNode* lval, ASTNode* rval){
 void Assign::printElem(){
 	printf("Assign:\n");
 }
+std::unique_ptr<MachineInstruction> Assign::assemble(){
+	return nullptr;
+}

@@ -22,5 +22,6 @@ public:
 	VarDec(std::string _name, type_t type);
 	VarDec(std::string _name, type_t type, ASTNode* size);
 	virtual void printElem() override;
+	virtual std::unique_ptr<MachineInstruction> assemble(void)override;
 };
 #endif /* VarDec_hpp */

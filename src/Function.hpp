@@ -20,6 +20,7 @@ public:
 	type_t type;
 	Function(type_t type, std::string name, ASTNode* params, ASTNode* body);
 	virtual void printElem(void) override;
-};
+	virtual std::unique_ptr<MachineInstruction> assemble(void)override;
+	};
 
 #endif /* Function_hpp */

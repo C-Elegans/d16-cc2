@@ -24,5 +24,6 @@ public:
 	Param(std::string _name, type_t type, bool array);
 
 	virtual void printElem() override;
+	virtual std::unique_ptr<MachineInstruction> assemble(void)override;
 };
 #endif /* Param_hpp */

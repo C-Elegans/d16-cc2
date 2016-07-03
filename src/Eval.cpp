@@ -13,3 +13,6 @@ Eval::Eval(ASTNode* a){
 void Eval::printElem(){
 	printf("Eval:\n");
 }
+std::unique_ptr<MachineInstruction> Eval::assemble(){
+	return nullptr;
+}

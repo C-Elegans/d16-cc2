@@ -16,3 +16,6 @@ Return::Return(ASTNode* expr){
 void Return::printElem(){
 	printf("Return:\n");
 }
+std::unique_ptr<MachineInstruction> Return::assemble(){
+	return nullptr;
+}

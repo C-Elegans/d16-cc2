@@ -20,3 +20,6 @@ VarDec::VarDec(std::string _name, type_t type, ASTNode* size){
 void VarDec::printElem(){
 	printf("Vardec: %s %s\n",type_strings[static_cast<int>(vartype)],name.c_str());
 }
+std::unique_ptr<MachineInstruction> VarDec::assemble(){
+	return nullptr;
+}

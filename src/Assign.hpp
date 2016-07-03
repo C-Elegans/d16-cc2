@@ -19,5 +19,6 @@ class Assign: public ASTNode {
 public:
 	Assign(ASTNode* lval, ASTNode* rval);
 	virtual void printElem(void) override;
+	virtual std::unique_ptr<MachineInstruction> assemble(void)override;
 };
 #endif /* Assign_hpp */

@@ -19,5 +19,6 @@ public:
 	Operator_type type;
 	Operator(Operator_type type,AST_ptr child1, AST_ptr child2);
 	virtual void printElem(void) override;
+	virtual std::unique_ptr<MachineInstruction> assemble(void)override;
 };
 #endif /* Operator_hpp */

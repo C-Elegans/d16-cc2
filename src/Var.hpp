@@ -20,6 +20,7 @@ public:
 	Var(std::string name);
 	Var(std::string name,ASTNode* addr);
 	virtual void printElem(void) override;
+	virtual std::unique_ptr<MachineInstruction> assemble(void)override;
 };
 
 #endif /* Var_hpp */

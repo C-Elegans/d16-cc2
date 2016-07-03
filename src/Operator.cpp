@@ -19,3 +19,6 @@ void Operator::printElem(){
 	printf("Operator: %s\n",type_strings[static_cast<int>(type)]);
 
 }
+std::unique_ptr<MachineInstruction> Operator::assemble(){
+	return nullptr;
+}

@@ -14,3 +14,6 @@ Call::Call(std::string name, ASTNode* args){
 void Call::printElem(){
 	printf("%s()\n",f_name.c_str());
 }
+std::unique_ptr<MachineInstruction> Call::assemble(){
+	return nullptr;
+}

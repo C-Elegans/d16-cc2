@@ -13,6 +13,7 @@
 #include "Function.hpp"
 #include "Operator.hpp"
 #include "parser.hpp"
+#include "CodeGen.hpp"
 #include "ExpressionSimplifier.hpp"
 extern FILE* yyin;
 extern int yydebug;
@@ -33,9 +34,11 @@ int main(int argc, const char * argv[]) {
 		yyparse();
 	} while (!feof(yyin));
 	ast->print(0);
-	ExpressionSimplifier e;
-	e.runPass(ast);
-	ast->print(0);
+	//ExpressionSimplifier e;
+	//e.runPass(ast);
+	//ast->print(0);
+	CodeGen c(ast);
+	
 	delete ast;
 	
     return 0;

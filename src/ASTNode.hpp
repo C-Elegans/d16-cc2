@@ -11,7 +11,8 @@
 
 #include <stdio.h>
 #include <vector>
-
+#include <memory>
+#include "MachineInstruction.hpp"
 class ASTNode {
 	public:
 		std::vector<ASTNode* > children;
@@ -29,6 +30,7 @@ public:
 
 	void print(int level);
 	virtual void printElem(void);
+	virtual std::unique_ptr<MachineInstruction> assemble(void);
 
 };
 typedef ASTNode* AST_ptr;
