@@ -26,10 +26,14 @@ public:
 	
 	void add_child(ASTNode*);
 	void replace_child(ASTNode* from, ASTNode* to);
-	
+
 	void print(int level);
 	virtual void printElem(void);
+
 };
 typedef ASTNode* AST_ptr;
-
+template<typename Base, typename T>
+inline bool instanceOf(const T *ptr){
+	return dynamic_cast<const Base*>(ptr) != nullptr;
+}
 #endif /* ASTNode_hpp */

@@ -58,3 +58,4 @@ void ASTNode::replace_child(ASTNode *from, ASTNode *to){
 		children[i]->replace_child(from, to);
 	}
 }
+
