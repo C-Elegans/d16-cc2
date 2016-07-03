@@ -15,7 +15,7 @@
 
 class CodeGen {
 	std::vector<std::unique_ptr<MachineInstruction>> instructions;
-	void recurse(ASTNode* ast);
+	void recurse(ASTNode* ast, bool local);
 public:
 	CodeGen(ASTNode* ast);
 	void assemble(uint16_t* data);

@@ -17,6 +17,8 @@ class Var : public ASTNode {
 public:
 	std::string name;
 	bool isArray;
+	int address;
+	bool local;
 	Var(std::string name);
 	Var(std::string name,ASTNode* addr);
 	virtual void printElem(void) override;
