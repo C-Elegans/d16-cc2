@@ -10,6 +10,7 @@
 #include "Instruction_RI.hpp"
 #include "Instruction_RR.hpp"
 #include <unordered_map>
+#include "Peephole.hpp"
 int stack_addr = 0;
 std::unordered_map<std::string, int> local_addresses;
 void CodeGen::recurse(ASTNode* ast, bool local){
@@ -41,6 +42,12 @@ void CodeGen::recurse(ASTNode* ast, bool local){
 }
 CodeGen::CodeGen(ASTNode* ast){
 	recurse(ast,false);
+	for(int i=0;i<instructions.size();i++){
+		instructions[i]->print();
+	}
+    printf("\n\n");
+	Peephole p;
+	instructions = std::move(p.run_passes(std::move(instructions)));
 	for(int i=0;i<instructions.size();i++){
 		instructions[i]->print();
 	}

@@ -12,10 +12,11 @@
 #include <stdio.h>
 #include "MachineInstruction.hpp"
 class Instruction_RI: public MachineInstruction {
-	int immediate;
-	int rD;
+
 
 public:
+	int immediate;
+	int rD;
 	Instruction_RI(OpType t, int rD,int immediate);
 	Instruction_RI(OpType t, int immediate);
 	virtual void assemble(uint16_t**) override;

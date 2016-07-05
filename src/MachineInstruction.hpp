@@ -10,6 +10,9 @@
 #define MachineInstruction_hpp
 #include <cstdint>
 #include <stdio.h>
+#include <memory>
+#include <vector>
+
 typedef enum _Op_Type{
 	NOP=0,
 	ADD,
@@ -58,7 +61,7 @@ typedef enum _Op_Type{
 	SBBI=0xA0
 } OpType;
 class MachineInstruction {
-protected:
+public:
 	OpType type;
 
 public:
@@ -67,4 +70,5 @@ public:
 	virtual void print() = 0;
 	void printType();
 };
+typedef std::vector<std::unique_ptr<MachineInstruction>> instruction_vec;
 #endif /* MachineInstruction_hpp */

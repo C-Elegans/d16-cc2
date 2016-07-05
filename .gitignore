@@ -13,3 +13,5 @@ INSTALL
 parser.cpp
 parser.hpp
 src/lex.cpp
+.idea/*
+build/*

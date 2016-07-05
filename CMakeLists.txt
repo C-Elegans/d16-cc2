@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(d16_cc2)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wno-deprecated-register")
 FIND_PACKAGE(BISON REQUIRED)
 SET(BisonOutput ${CMAKE_SOURCE_DIR}/src/parser.cpp)
 IF(BISON_FOUND)
@@ -60,9 +60,19 @@ set(SOURCE_FILES
     src/VarDec.hpp
     src/While.cpp
     src/While.hpp
-    autogen.sh
-    configure.ac
-    Makefile.am
-    README.md)
+    src/Instruction_Mem.cpp
+    src/Instruction_Mem.hpp
+    src/Instruction_RI.cpp
+    src/Instruction_RI.hpp
+    src/Instruction_RR.cpp
+    src/Instruction_RR.hpp
+    src/MachineInstruction.cpp
+    src/MachineInstruction.hpp
+    src/OptimizePass.cpp
+    src/OptimizePass.hpp
+    src/ExpressionSimplifier.cpp
+    src/ExpressionSimplifier.hpp
+    src/CodeGen.cpp
+    src/CodeGen.hpp src/Peephole.cpp src/Peephole.hpp)
 
 add_executable(d16_cc2 ${SOURCE_FILES} ${BisonOutput} ${FlexOutput})
