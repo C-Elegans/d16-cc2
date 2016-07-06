@@ -40,6 +40,7 @@ typedef enum _Op_Type{
 	STCP,
 	ADC,
 	SBB,
+    SET,
 
 	ADDI=0x81,
 	SUBI=0x82,

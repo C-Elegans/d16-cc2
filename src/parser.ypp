@@ -24,8 +24,10 @@ ASTNode* ast;
 %token ELSE IF INT RETURN VOID WHILE
 %token PLUS MINUS MULTIPLY DIVIDE
 %token CMP_EQUAL CMP_NEQUAL CMP_GREATER CMP_LESS CMP_GREATER_EQ CMP_LESS_EQ
+%token T_AND T_OR T_XOR
 %nonassoc NUM
 %left CMP_EQUAL CMP_NEQUAL CMP_GREATER CMP_LESS CMP_GREATER_EQ CMP_LESS_EQ
+%left T_AND T_OR T_XOR
 %left PLUS MINUS
 %left MULTIPLY DIVIDE
 
@@ -115,7 +117,7 @@ simple_expression:
 	|	term {$$=$1;}
 ;
 operator:
-	|	PLUS {$$=Operator_type::ADD;}
+		PLUS {$$=Operator_type::ADD;}
 	|	MINUS {$$=Operator_type::SUBTRACT;}
 	|	MULTIPLY {$$=Operator_type::MUL;}
 	|	DIVIDE {$$=Operator_type::DIV;}
@@ -125,6 +127,9 @@ operator:
 	|	CMP_LESS {$$=Operator_type::CMP_LT;}
 	|	CMP_GREATER_EQ {$$=Operator_type::CMP_GE;}
 	|	CMP_LESS_EQ {$$=Operator_type::CMP_LE;}
+    |   T_AND {$$=Operator_type::O_AND;}
+    |   T_OR  {$$=Operator_type::O_OR;}
+    |   T_XOR {$$=Operator_type::O_XOR;}
 ;
 term:
 		'(' expression ')' {$$=$2;}

@@ -72,6 +72,8 @@ set(SOURCE_FILES
     src/OptimizePass.hpp
     src/ExpressionSimplifier.cpp
     src/ExpressionSimplifier.hpp
+    src/Instruction_Jmp.cpp
+    src/Instruction_Jmp.hpp
     src/CodeGen.cpp
     src/CodeGen.hpp src/Peephole.cpp src/Peephole.hpp)
 

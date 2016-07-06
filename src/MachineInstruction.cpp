@@ -38,7 +38,10 @@ static const char* opcodes_str[] = {
 	"rol",
 	"rcl",
 	"ldcp",
-	"stcp"
+	"stcp",
+    "adc",
+    "sbb",
+    "set"
 };
 void MachineInstruction::printType(){
 	printf("%s",opcodes_str[type&0x7f]);

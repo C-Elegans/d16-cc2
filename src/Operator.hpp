@@ -11,7 +11,7 @@
 #include "ASTNode.hpp"
 #include <stdio.h>
 
-enum class Operator_type{ADD,SUBTRACT,MUL,DIV,CMP_EQ,CMP_NE,CMP_GT,CMP_LT,CMP_GE,CMP_LE};
+enum class Operator_type{ADD,SUBTRACT,MUL,DIV,CMP_EQ,CMP_NE,CMP_GT,CMP_LT,CMP_GE,CMP_LE, O_AND, O_OR, O_XOR};
 class Operator : public ASTNode{
 
 
