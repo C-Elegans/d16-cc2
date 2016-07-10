@@ -37,7 +37,7 @@ ASTNode* ast;
 %type<node>args args_list call
 
 %type<type> type_specifier
-%nonassoc ELSE
+%left ELSE
 %start program
 %%
 program:

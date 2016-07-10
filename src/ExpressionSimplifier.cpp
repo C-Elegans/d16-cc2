@@ -36,6 +36,33 @@ void recurse(ASTNode* parent, ASTNode* child){
 						case Operator_type::DIV:
 							result = val1 / val2;
 							break;
+                        case Operator_type::CMP_EQ:
+                            result = val1 == val2;
+                            break;
+                        case Operator_type::CMP_NE:
+                            result = val1!= val2;
+                            break;
+                        case Operator_type::CMP_GT:
+                            result = val1 > val2;
+                            break;
+                        case Operator_type::CMP_GE:
+                            result = val1 >= val2;
+                            break;
+                        case Operator_type::CMP_LE:
+                            result = val1 <= val2;
+                            break;
+                        case Operator_type::CMP_LT:
+                            result = val1 < val2;
+                            break;
+                        case Operator_type::O_AND:
+                            result = val1 & val2;
+                            break;
+                        case Operator_type::O_XOR:
+                            result = val1 ^ val2;
+                            break;
+                        case Operator_type::O_OR:
+                            result = val1 | val2;
+                            break;
 					}
 					NumNode* newNode = new NumNode(result);
 					parent->replace_child(op, newNode);

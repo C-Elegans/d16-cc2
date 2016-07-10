@@ -34,9 +34,9 @@ int main(int argc, const char * argv[]) {
 		yyparse();
 	} while (!feof(yyin));
 	ast->print(0);
-	//ExpressionSimplifier e;
-	//e.runPass(ast);
-	//ast->print(0);
+	ExpressionSimplifier e;
+	e.runPass(ast);
+	ast->print(0);
 	CodeGen c(ast);
 	
 	delete ast;
